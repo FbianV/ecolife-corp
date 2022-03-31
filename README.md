@@ -1,3 +1,5 @@
-Mauricio Castillo Bravo
-Luis Herrera Montoya
-Fabián Vergara Morales
+## Integrantes
+
+- Mauricio Castillo Bravo
+- Luis Herrera Montoya
+- Fabián Vergara Morales
