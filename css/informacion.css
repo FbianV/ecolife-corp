@@ -1,0 +1,11 @@
+.cont h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }

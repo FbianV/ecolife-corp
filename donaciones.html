@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>EcoLifeCorp</title>
+        <!--estilos-->
+        <link rel="stylesheet"  href="css/reset.css" type="text/css"/>
+        <link rel="stylesheet"  href="css/donaciones.css" type="text/css"/>
+        <link rel="stylesheet" href="css/menu.css" type="text/css"/>
+        <link rel="stylesheet"  href="css/estilos.css" type="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/icons.css" type="text/css"/>
+        <link rel="stylesheet" href="css/redes.css" type="text/css"/>
+        <!--javascript-->
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <img src="multimedia/imagenes/logo.png"/>
+            </div> 
+        </header>
+        <div class="buscador">
+            <form method="POST" >
+                <input type="search" autocomplete="address-level1" placeholder="Buscador"/>
+            </form>
+        </div>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html" title="inicio"><span class="material-icons">home</span> Inicio</a></li>
+                <li><a href="informacion.html" title="informacion"><span class="material-icons">info</span> Informacion</a></li>
+                <li><a href="proyectos.html" title="proyectos"><span class="material-icons">work_history</span> Proyectos</a></li>
+                <li><a href="contactenos.html" title="contáctenos"><span class="material-icons">contactless</span> Contáctenos</a></li>
+                <li class="visited"><a href="donaciones.html" title="donaciones"><span class="material-icons">groups</span> Donaciones</a></li>
+            </ul>
+        </nav>
+        <div class="donaciones">
+            <div class="donaciones-contenido">
+                <div class="donaciones-contenido-texto">
+                    <h1>Donaciones</h1>
+                    <p>
+                        Si desea donar, puede hacerlo a través de PayPal.
+                    </p>
+                    <p>
+                        Para donar, haga clic en el botón de abajo.
+                    </p>
+                </div>
+                <div class="donaciones-contenido-boton">
+                    <form action="https://www.paypal.com/" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="ZLZQZQZQZQZQZ">
+                        <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal">
+                        <img alt="" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div id="pie">
+                <div id="pie-izq">
+                    <div id="logo-pie">
+                        <img src="multimedia/imagenes/logo.png"/>
+                    </div>
+                    <div id="copyright">
+                        <p>Copyright © 2023 EcoLifeCorp</p>
+                    </div>
+                </div>
+                <div id="pie-der">
+                    <div id="redes">
+                        <div id="facebook">
+                            <a href="https://www.facebook.com/" target="_blank">
+                                <img src="multimedia/imagenes/facebook.png" width="5%"/>
+                            </a>
+                        </div>
+                        <div id="twitter">
+                            <a href="https://twitter.com/" target="_blank">
+                                <img src="multimedia/imagenes/twitter.png"/>
+                            </a>
+                        </div>
+                        <div id="instagram">
+                            <a href="https://www.instagram.com/" target="_blank">
+                                <img src="multimedia/imagenes/instagram.png"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
