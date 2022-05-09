@@ -15,3 +15,5 @@
 - Ver Proyectos: ver proyecto desde el espacio de trabajo(Mis proyectos), o desde "comunidad".
 - Agregar/Editar/Eliminar comentario: sección para agregar,editar, o eliminar comentarios hechos a un proyecto.
 - Donaciones: espacio para donaciones monetarias a los proyectos dentro de la página.
+
+Link Figma: https://www.figma.com/file/B01PjPoWjIuvBOEoe7fwLl/Untitled?node-id=0%3A1
