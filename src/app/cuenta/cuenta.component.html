@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Crear Cuenta</h3>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form [formGroup]="formulario" (ngSubmit)="validacion()" novalidate>
+                        <ul>
+                            <li>
+                               <label class="texto">Nombre</label>
+                               <input class="caja" type="text"  formControlName="nombre" placeholder="Nombre">
+                               <div *ngIf="formulario.controls['nombre'].invalid && (formulario.controls['nombre'].dirty || formulario.controls['nombre'].touched)" class="alert alert-danger">
+                                    <div *ngIf="formulario.controls['nombre'].hasError('required')">
+                                        Campo obligatorio
+                                    </div>
+                                    <div *ngIf="formulario.controls['nombre'].hasError('maxlength')">
+                                        el máximo de caracteres es 20
+                                    </div>
+                               </div>
+                            </li>
+                            <li>
+                                <label class="texto">Correo electrónico</label>
+                                <input class="caja" type="text" formControlName="correo" placeholder="Correo electrónico">
+                                <div *ngIf="formulario.controls['correo'].invalid && (formulario.controls['correo'].dirty || formulario.controls['correo'].touched)" class="alert alert-danger">
+                                    <div *ngIf="formulario.controls['correo'].hasError('required')">
+                                        Campo obligatorio
+                                    </div>
+                               </div>
+                            </li>
+                            <li>
+                                <label class="texto">Contraseña</label>
+                                <input class="caja" type="password" formControlName="password" placeholder="Contraseña">
+                                <div *ngIf="formulario.controls['password'].invalid && (formulario.controls['password'].dirty || formulario.controls['password'].touched)" class="alert alert-danger">
+                                    <div *ngIf="formulario.controls['password'].hasError('required')">
+                                        Campo obligatorio
+                                    </div>
+                               </div>
+                            </li>
+                            <li>
+                               <button class="boton" type="submit" [disabled]="!formulario.valid">Enviar Datos</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Iniciar Sesión</h3>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form [formGroup]="formulario2" (ngSubmit)="validacion()" novalidate>
+                        <ul> 
+                            <li>
+                                <label class="texto">Correo electrónico</label>
+                                <input class="caja" type="text" formControlName="correo" placeholder="Correo electrónico">
+                            </li>
+                            <li>
+                                <label class="texto">Contraseña</label>
+                                <input class="caja" type="password" formControlName="password" placeholder="Contraseña">
+                            </li>
+                            <li>
+                               <button class="boton" type="submit" [disabled]="!formulario2.valid">Enviar Datos</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
