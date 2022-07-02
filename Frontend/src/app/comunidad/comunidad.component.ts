@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import proyectos from '../json/proyectos.json';
-
+import {ComunidadService} from '../comunidad.service';
 @Component({
   selector: 'app-comunidad',
   templateUrl: './comunidad.component.html',
@@ -8,11 +7,19 @@ import proyectos from '../json/proyectos.json';
 })
 export class ComunidadComponent implements OnInit {
 
-  proyectos = proyectos;
+  proyectos= new Array<any>();
 
-  constructor() { }
+  constructor(private http:ComunidadService) { 
+
+  }
 
   ngOnInit(): void {
+    this.http.GetProyectos().subscribe(data=>{
+      for(let i=0; i<data.length; i++){
+        this.proyectos.push(data[i]);
+      }
+    })
+
   }
 
 }
