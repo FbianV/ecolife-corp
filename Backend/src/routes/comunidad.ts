@@ -1,10 +1,10 @@
 import { Router } from "express";
-import {getComunidad, postComunidad, putComunidad, deleteComunidad } from '../controllers/comunidad';
+import {getProyectosComunidad, postProyectoComunidad, putProyectoComunidad, deleteProyectoComunidad } from '../controllers/comunidad';
 
 const router=Router();
-router.get('/',getComunidad);
-router.post('/',postComunidad);
-router.put('/:idProyecto',putComunidad);
-router.delete('/:idProyecto',deleteComunidad);
+router.get('/',getProyectosComunidad);
+router.post('/',postProyectoComunidad);
+router.put('/:idProyecto',putProyectoComunidad);
+router.delete('/:idProyecto',deleteProyectoComunidad);
 
 export default router;

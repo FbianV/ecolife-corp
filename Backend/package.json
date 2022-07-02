@@ -12,7 +12,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "firebase": "^9.8.4",
+    "sequelize": "^6.21.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
