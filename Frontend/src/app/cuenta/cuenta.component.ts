@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms';
 import {FormularioService} from '../formulario.service';
-
+import { CuentaService } from '../services/cuenta.service';
 @Component({
     selector: 'app-cuenta',
     templateUrl: './cuenta.component.html',

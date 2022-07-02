@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ComunidadService} from '../comunidad.service';
+import {ComunidadService} from '../services/comunidad.service';
 @Component({
   selector: 'app-comunidad',
   templateUrl: './comunidad.component.html',
