@@ -20,7 +20,7 @@ export const getCuenta=(req:Request, res:Response)=>{
         const user = userCredential.user;
         //console.log(user);
         // ...
-        res.status(200).send({ error:'', message:{email }} );
+        res.status(200).send({ error:'', message:{email: email }} );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -31,13 +31,15 @@ export const getCuenta=(req:Request, res:Response)=>{
 
 export const postCuenta=(req:Request, res:Response)=>{
     const {body}=req;
+    const email:any = body.email ||'';
+    const password:any = body.password ||'';
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, body.email, body.password)
+    createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
     // ...
-    console.log("Signed up");
+    res.status(200).send({ error:'', message:{ email: email }} );
   })
   .catch((error) => {
     const errorCode = error.code;
