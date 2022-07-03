@@ -1,6 +1,5 @@
 import express, {Application} from 'express';
 import ComunidadRouter from './routes/comunidad'; 
-//import UsuarioRouter from './routes/usuario';
 import ProyectoRouter from './routes/misProyectos';
 import CuentaRouter from './routes/cuenta';
 
@@ -11,7 +10,7 @@ class Server{
     private port:number;
     private path={
         comunidad:'/api/comunidad',
-        misProyectos:'api/misProyectos',
+        proyectos:'/api/proyectos',
         cuenta:'/api/cuenta'
     }
     constructor(){
@@ -32,7 +31,7 @@ class Server{
 
     routes(){
         this.app.use(this.path.comunidad,ComunidadRouter);
-        this.app.use(this.path.misProyectos,ProyectoRouter);
+        this.app.use(this.path.proyectos,ProyectoRouter);
         this.app.use(this.path.cuenta,CuentaRouter);
     }
     

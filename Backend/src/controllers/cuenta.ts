@@ -33,6 +33,7 @@ export const postCuenta=(req:Request, res:Response)=>{
     const {body}=req;
     const email:any = body.email ||'';
     const password:any = body.password ||'';
+    const name:any = body.name ||'';
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {

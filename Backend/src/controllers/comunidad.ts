@@ -11,7 +11,7 @@ export const getProyectosComunidad=(req:Request, res:Response)=>{
     var data;
     onValue(proyectos, (snapshot) => {
     data = snapshot.val();
-    console.log(data);
+    //console.log(data);
     res.status(200).send(JSON.stringify(data));
     });
    

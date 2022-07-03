@@ -7,14 +7,17 @@ import { CuentaService } from './services/cuenta.service';
 })
 export class FormularioServicioService {
 
-
+  email = "a";
   constructor(private http:CuentaService) { }
 
   EnviarDatosSignIn(Datos:Cuenta){
     this.http.GetUsuarios(Datos.correo,Datos.password).subscribe(data=>{
-      console.log(data.message);
+      this.email = data.message.email;
     }
     ) 
+  }
+  exportarEmail(){
+    return this.email;
   }
   
 }

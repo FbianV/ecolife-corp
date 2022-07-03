@@ -24,7 +24,6 @@ export class CuentaService {
     return this.http.get('http://localhost:3000/api/cuenta/signIn',this.HttpUploadOptions);
   }
   PostUsuarios(email:string, password:string):Observable<any>{
-    console.log(111);
     return this.http.post('http://localhost:3000/api/cuenta/signUp',{email, password},this.HttpUploadOptions);
   }
 }

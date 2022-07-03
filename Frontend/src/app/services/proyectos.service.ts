@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {FormularioServicioService} from '../formulario-servicio.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ProyectosService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient ,public service:FormularioServicioService) { }
   HttpUploadOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -16,6 +17,7 @@ export class ProyectosService {
     })
   }
   GetProyectos():Observable<any>{
-    return this.http.get('http://localhost:3000/api/proyectos/');
+    var email = this.service.exportarEmail();
+    return this.http.get('http://localhost:3000/api/proyectos/'+email,this.HttpUploadOptions);
   }
 }
