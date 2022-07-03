@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {Cuenta} from './model/cuenta';
+import { CuentaService } from './services/cuenta.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +8,13 @@ import { Injectable } from '@angular/core';
 export class FormularioServicioService {
 
 
+  constructor(private http:CuentaService) { }
 
-  constructor() { }
+  EnviarDatosSignIn(Datos:Cuenta){
+    this.http.GetUsuarios(Datos.correo,Datos.password).subscribe(data=>{
+      console.log(data);
+    }
+    ) 
+  }
+  
 }

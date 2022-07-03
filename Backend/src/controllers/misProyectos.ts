@@ -1,6 +1,24 @@
 import {Request, Response} from 'express';
+import {proyecto} from '../models/proyectos';
+import {database} from '../index';
+import { ref, query, orderByChild, equalTo , set } from "firebase/database";
+import { getAuth } from "firebase/auth";
+
 
 export const getProyectos=(req:Request, res:Response)=>{
+
+
+    const auth = getAuth();
+
+    const myUserId:string = auth.currentUser?.uid || '';
+    const proyectosUsuarios:any = query(ref(database, 'proyectos/'),equalTo(myUserId));
+
+    if(proyectosUsuarios.length>0){
+    res.status(200).send({ error:'', message:(JSON.stringify(proyectosUsuarios)) } );
+    }else{
+        res.status(400).send({ error:'Usuario sin proyectos', message:'' } );
+    }
+    /*
     res.json([
         {
             "name": "Parque solar de vista al mar",
@@ -14,9 +32,16 @@ export const getProyectos=(req:Request, res:Response)=>{
             "type": "Energía eólica",
             "image": "../../assets/images/2.png"
         }
-    ]);
+    ]);*/
 }
 export const getProyecto=(req:Request, res:Response)=>{
+    var Proyecto:proyecto = findProjectByid(req.params.id);
+    if(Proyecto){
+        res.status(200).send({ error:'', message:(JSON.stringify(Proyecto)) } );
+    }else{
+        res.status(400).send({ error:'Usuario sin proyectos', message:'' } );
+    }/*
+
   res.json([
       {
           "name": "Parque solar de vista al mar",
@@ -30,17 +55,22 @@ export const getProyecto=(req:Request, res:Response)=>{
           "type": "Energía eólica",
           "image": "../../assets/images/2.png"
       }
-  ]);
+  ]);*/
 }
 
 
 
 export const postProyecto=(req:Request, res:Response)=>{
     const {body}=req;
-    res.json({
-        msg:'postProducto',
-        body
-    })
+    var project:proyecto = (body.ProyectoId,body.nombre,body.descripcion,body.imagen, body.tipo);
+    set(ref(database, 'proyecto/'), {
+        ProyectoId: project.ProyectoId,
+        nombre: project.nombre,
+        descripcion: project.descripcion,
+        imagen: project.imagen,
+        tipo: project.tipo
+  });
+    res.status(201).send({ error:'', message:(JSON.stringify(project)) } );
 
 }
 
@@ -60,4 +90,12 @@ export const deleteProyecto=(req:Request, res:Response)=>{
         msg:'deleteProducto',
         idProducto
     })
+}
+
+function findProjectByid(id:string){
+    const auth = getAuth();
+
+    const myUserId:string = auth.currentUser?.uid || '';
+    const proyectoById:any= query(ref(database, 'proyectos/'),equalTo(myUserId),equalTo(id));
+    return proyectoById;
 }

@@ -2,9 +2,9 @@ import Server from './app';
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
 
+import { config } from './enviorements';
 // TODO: Add SDKs for Firebase products that you want to use
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -16,21 +16,21 @@ import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyD0ugc1KdIhvyZgP8Qf0ZGfIvLhuvlIUBI",
+  apiKey: config.apiKey,
 
-  authDomain: "proyectoweb-2be9e.firebaseapp.com",
+  authDomain: config.authDomain,
 
-  projectId: "proyectoweb-2be9e",
+  projectId: config.projectId,
 
-  storageBucket: "proyectoweb-2be9e.appspot.com",
+  storageBucket:  config.storageBucket,
 
-  messagingSenderId: "606145529960",
+  messagingSenderId: config.messagingSenderId,
 
-  appId: "1:606145529960:web:3db1b9ffc60598902653dd",
+  appId: config.appId,
 
-  measurementId: "G-G4EQHTRPD1",
+  measurementId: config.measurementId,
 
-  databaseURL: "https://proyectoweb-2be9e-default-rtdb.firebaseio.com/",
+  databaseURL: config.databaseURL
 
 };
 
