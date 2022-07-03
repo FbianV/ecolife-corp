@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="addProyect">
+        <div class="row">
+            <div class="col-12">
+                <a [routerLink]="['/addproyecto']" class="btn btn-primary">Agregar Proyecto</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="proyectos.length>1">
+    <a *ngFor="let proyecto of proyectos">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{proyecto.name}}
+                        <div class="botones">
+                            <a class="btn btn-primary">Editar</a>
+                            <a class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <img class="imagen" src="{{proyecto.image}}" alt="{{proyecto.description}}">
+                    <p>{{proyecto.description}}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
