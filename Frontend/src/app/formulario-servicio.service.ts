@@ -12,7 +12,7 @@ export class FormularioServicioService {
 
   EnviarDatosSignIn(Datos:Cuenta){
     this.http.GetUsuarios(Datos.correo,Datos.password).subscribe(data=>{
-      console.log(data);
+      console.log(data.message);
     }
     ) 
   }

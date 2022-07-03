@@ -9,37 +9,24 @@ import { getAuth, createUserWithEmailAndPassword, confirmPasswordReset,signInWit
 
 
 export const getCuenta=(req:Request, res:Response)=>{
- const {body}=req;
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, body.email, body.password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log(user);
-      // ...
-      res.status(200).send({ error:'', message:'Usuario logeado' } );
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("Signed in error");
-    });
-    /*const {params}=req;
+    const {query}=req;
+    const email:any = query.email ||'';
+    const password:any = query.password ||'';
     const auth = getAuth();
-    console.log(req);
-    signInWithEmailAndPassword(auth, params.email, params.password)
+    console.log(query);
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         //console.log(user);
         // ...
-        res.status(200).send({ error:'', message:'Usuario logeado' } );
+        res.status(200).send({ error:'', message:{email }} );
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("Signed in error");
-      })*/
+      })
 }
 
 export const postCuenta=(req:Request, res:Response)=>{
