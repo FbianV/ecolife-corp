@@ -7,3 +7,18 @@
         </div>
     </div>
 </div>
+<div *ngIf="">
+    <a *ngFor="let proyecto of proyectos">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{proyecto.name}}</h3>
+                </div>
+                <div class="card-body">
+                    <img class="imagen" src="{{proyecto.image}}" alt="{{proyecto.description}}">
+                    <p>{{proyecto.description}}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

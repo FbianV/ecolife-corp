@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ProyectosService} from '../services/proyectos.service';
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProyectosComponent implements OnInit {
 
-  constructor() { }
+  proyectos= new Array<any>();
+  constructor(private http:ProyectosService) { }
 
   ngOnInit(): void {
+    this.http.GetProyectos().subscribe(data=>{
+      for(let i=0; i<data.length; i++){
+        this.proyectos.push(data[i]);
+      }
+    })
   }
-
 }
