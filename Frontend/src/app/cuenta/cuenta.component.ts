@@ -15,6 +15,7 @@ export class CuentaComponent implements OnInit {
     formulario2:FormGroup;
     formulario3:FormGroup;
     usuariologeado:boolean=true;
+    texto:string="";
     constructor(public FormB:FormBuilder, public ServicioSignUp:FormularioService,private http:CuentaService ,
         public ServicioSignIn:FormularioServicioService, public ServicioCambios:CambiosDatosService) {
         this.formulario=this.FormB.group({
@@ -59,6 +60,7 @@ export class CuentaComponent implements OnInit {
     cambiardatos(){
         var nombre:any= this.formulario3.get("name")?.value;
         this.ServicioCambios.CambiarDatos(nombre);
+        this.texto="Datos cambiados, nuevo nombre: "+nombre;
     }
 
 }
