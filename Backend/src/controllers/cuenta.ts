@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import {query, Request, Response} from 'express';
 import {database} from '../index';
 import {ref, onValue, set } from "firebase/database";
 import { usuario } from "../models/usuarios";
@@ -67,4 +67,45 @@ export const postCuenta=(req:Request, res:Response)=>{
   });
 
 
+
+}
+export const isLogCuenta=(req:Request, res:Response)=>{
+  const auth = getAuth();
+  const user = auth.currentUser;
+  console.log(1);
+ 
+ 
+  if (user) {
+    const name = user.displayName?.toString() ||'';
+    console.log(name);
+    console.log(2);
+    res.status(400).send({ error:'',message:true});
+  }
+  else {
+    console.log(3);
+    res.status(400).send({ error:'Sin usuario logeados',message:false});
+    // No user is signed in.
+  }
+
+}
+
+export const updateCuenta=(req:Request, res:Response)=>{
+  const {body}=req;
+  const nombre:any = body.name ||'';
+
+  const auth = getAuth() as any;
+  updateProfile(auth.currentUser, {
+  displayName: nombre
+  }).then(() => {
+  // Profile updated!
+  const user = auth.currentUser;
+  // ...
+  console.log(user.displayName);
+  res.status(200).send({ error:'', message:{name: nombre }} );
+  }).catch((error) => {
+  // An error occurred
+  // ...
+  });
+
+  
 }

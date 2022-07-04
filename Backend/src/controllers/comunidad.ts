@@ -13,7 +13,6 @@ export const getProyectosComunidad=(req:Request, res:Response)=>{
     data = snapshot.val();
     if(data){
         var datosFinales = filrardatos(data);
-        console.log(datosFinales);
         res.status(200).send({ error:'',message:(datosFinales)});
     }else{
         console.log("no hay datos");

@@ -27,4 +27,10 @@ export class CuentaService {
   PostUsuarios(name:string, email:string, password:string):Observable<any>{
     return this.http.post('http://localhost:3000/api/cuenta/signUp',{name, email, password},this.HttpUploadOptions);
   }
+  isloged():Observable<any>{
+    return this.http.get('http://localhost:3000/api/cuenta/loggin',this.HttpUploadOptions);
+  }
+  updateUsuarios(name:string){
+    return this.http.put('http://localhost:3000/api/cuenta/update',{name},this.HttpUploadOptions);
+  }
 }
