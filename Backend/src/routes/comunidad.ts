@@ -5,6 +5,6 @@ const router=Router();
 router.get('/',getProyectosComunidad);
 router.post('/',postProyectoComunidad);
 router.put('/:idProyecto',putProyectoComunidad);
-router.delete('/:idProyecto',deleteProyectoComunidad);
+router.delete('/',deleteProyectoComunidad);
 
 export default router;

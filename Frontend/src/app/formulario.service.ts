@@ -10,7 +10,7 @@ export class FormularioService {
 
 
   EnviarDatos(Datos:Cuenta){
-    this.http.PostUsuarios(Datos.correo,Datos.password).subscribe(data=>{
+    this.http.PostUsuarios(Datos.nombre ,Datos.correo, Datos.password).subscribe(data=>{
       console.log(data);
     })
   } catch (error:any) {  

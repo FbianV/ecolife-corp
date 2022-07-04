@@ -12,7 +12,7 @@ export class CuentaComponent implements OnInit {
     activarMsg:boolean=false;
     formulario:FormGroup;
     formulario2:FormGroup;
-    constructor(public FormB:FormBuilder, public Servicio:FormularioService,private http:CuentaService ,public Servicio2:FormularioServicioService) {
+    constructor(public FormB:FormBuilder, public ServicioSignUp:FormularioService,private http:CuentaService ,public ServicioSignIn:FormularioServicioService) {
         this.formulario=this.FormB.group({
             nombre: ["", [Validators.required,Validators.maxLength(20)]],
             correo: ["",[Validators.required,Validators.email]],
@@ -30,13 +30,13 @@ export class CuentaComponent implements OnInit {
     validacion(){
         console.log(this.formulario.get("nombre")?.value);
         this.activarMsg=true;
-        this.Servicio.EnviarDatos({"id":1,"nombre":this.formulario.get("nombre")?.value,"correo":this.formulario.get("correo")?.value,"password":this.formulario.get("password")?.value});
+        this.ServicioSignUp.EnviarDatos({"id":1,"nombre":this.formulario.get("nombre")?.value,"correo":this.formulario.get("correo")?.value,"password":this.formulario.get("password")?.value});
 
     }
     validacion2(){
         console.log(this.formulario2.get("correo")?.value);
         this.activarMsg=true;
-        this.Servicio2.EnviarDatosSignIn({"id":1,"nombre":"","correo":this.formulario2.get("correo")?.value,"password":this.formulario2.get("password")?.value});
+        this.ServicioSignIn.EnviarDatosSignIn({"id":1,"nombre":"","correo":this.formulario2.get("correo")?.value,"password":this.formulario2.get("password")?.value});
 
     }
 }

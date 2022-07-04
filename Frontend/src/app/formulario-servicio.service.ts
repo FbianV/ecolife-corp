@@ -8,16 +8,18 @@ import { CuentaService } from './services/cuenta.service';
 export class FormularioServicioService {
 
   email = "a";
+  name = "";
   constructor(private http:CuentaService) { }
 
   EnviarDatosSignIn(Datos:Cuenta){
-    this.http.GetUsuarios(Datos.correo,Datos.password).subscribe(data=>{
+    this.http.GetUsuarios(Datos.nombre, Datos.correo,Datos.password).subscribe(data=>{
       this.email = data.message.email;
+      this.name = data.message.name;
     }
     ) 
   }
-  exportarEmail(){
-    return this.email;
+  exportarDatos(){
+    return {email: this.email, name: this.name};
   }
   
 }

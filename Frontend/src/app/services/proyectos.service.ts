@@ -17,7 +17,6 @@ export class ProyectosService {
     })
   }
   GetProyectos():Observable<any>{
-    var email = this.service.exportarEmail();
-    return this.http.get('http://localhost:3000/api/proyectos/'+email,this.HttpUploadOptions);
+    return this.http.get('http://localhost:3000/api/proyectos',this.HttpUploadOptions);
   }
 }

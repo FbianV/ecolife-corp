@@ -1,7 +1,7 @@
-import {Request, Response} from 'express';
+import e, {Request, Response} from 'express';
 import {database} from '../index';
-import {ref, onValue} from "firebase/database";
-
+import { ref, query, equalTo , set , onValue, orderByChild, remove,child} from "firebase/database";
+import { getAuth } from "firebase/auth";
 
 
 
@@ -11,8 +11,14 @@ export const getProyectosComunidad=(req:Request, res:Response)=>{
     var data;
     onValue(proyectos, (snapshot) => {
     data = snapshot.val();
-    //console.log(data);
-    res.status(200).send(JSON.stringify(data));
+    if(data){
+        var datosFinales = filrardatos(data);
+        console.log(datosFinales);
+        res.status(200).send({ error:'',message:(datosFinales)});
+    }else{
+        console.log("no hay datos");
+            res.status(200).send({ error:'',message:[]});
+        }
     });
    
 
@@ -39,34 +45,30 @@ export const putProyectoComunidad=(req:Request, res:Response)=>{
 
 
 export const deleteProyectoComunidad=(req:Request, res:Response)=>{
-    const {idProducto}=req.params;
-    res.json({
-        msg:'deleteProducto',
-        idProducto
-    })
-}
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const idProyecto:string = req.query.nombre?.toString() ||'';
 
+    if (user) {
+        const email = user.email?.toString() ||'';
+        const name = user.displayName?.toString() ||'';
+        if(email==='admin@kesos.com' && name==='admin'){
+            console.log("idProyecto :",idProyecto);
+            remove(ref(database, 'proyectos/' +idProyecto));
+            res.status(200).send({ error:'', message:'Proyecto eliminado' });
+        }
 
-/*
-[
-    {
-        "name": "Parque solar de vista al mar",
-        "description": "Parque muy grande de 3300 KW de energía solar. El parque cuenta con una vista panorámica al mar, con una gran cantidad de árboles y una gran cantidad de plantas de interés.",
-        "type": "Energía solar",
-        "image": "../../assets/images/1.jpeg"
-    },
-    {
-        "name": "Parque eólico en Atacama",
-        "description": "Parque eólico cuenta con 50 generadores eólicos en las planicies de Atacama",
-        "type": "Energía eólica",
-        "image": "../../assets/images/2.png"
-    },
-    {
-        "name": "Parque solar en la ciudad de Santiago",
-        "description": "Parque solar en lo alto de los Andes",
-        "type": "Energía solar",
-        "image": "../../assets/images/3.jpg"
+    } else {
+        res.status(400).send({ error:'Sin usuario logeados',message:''});
+        // No user is signed in.
     }
-]
-    
-*/
+}
+//functions 
+function filrardatos(datos:any){
+    for(var i = 0; i < datos.length; i++){
+          if(datos[i] == null){
+              datos.splice(i, 1);
+          }  
+     }
+     return datos;
+ }

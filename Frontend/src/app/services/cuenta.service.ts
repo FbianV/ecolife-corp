@@ -16,14 +16,15 @@ export class CuentaService {
       'Access-Control-Allow-Headers': 'content-type',
       'Content-Type': 'application/json'
     }),
-    params:{email:"adasd", password:"adasd"}
+    params:{name:"",email:"", password:""}
   }
-  GetUsuarios(email:string, password:string):Observable<any>{
+  GetUsuarios(name:string, email:string, password:string):Observable<any>{
     this.HttpUploadOptions.params.email = email;
     this.HttpUploadOptions.params.password = password;
+    this.HttpUploadOptions.params.name = name;
     return this.http.get('http://localhost:3000/api/cuenta/signIn',this.HttpUploadOptions);
   }
-  PostUsuarios(email:string, password:string):Observable<any>{
-    return this.http.post('http://localhost:3000/api/cuenta/signUp',{email, password},this.HttpUploadOptions);
+  PostUsuarios(name:string, email:string, password:string):Observable<any>{
+    return this.http.post('http://localhost:3000/api/cuenta/signUp',{name, email, password},this.HttpUploadOptions);
   }
 }

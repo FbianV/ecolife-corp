@@ -13,9 +13,14 @@ export class ComunidadService {
       'Access-Control-Allow-Methods': 'POST, GET, DELETE, PUT',
       'Access-Control-Allow-Headers': 'content-type',
       'Content-Type': 'application/json'
-    })
+    }),
+    params:{nombre:""}
   }
   GetProyectos():Observable<any>{
     return this.http.get('http://localhost:3000/api/comunidad');
+  }
+  deleteProyecto(nombre:string):Observable<any>{
+    this.HttpUploadOptions.params.nombre = nombre;
+    return this.http.delete('http://localhost:3000/api/comunidad',this.HttpUploadOptions);
   }
 }

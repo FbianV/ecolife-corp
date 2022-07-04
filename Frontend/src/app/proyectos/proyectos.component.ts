@@ -12,11 +12,13 @@ export class ProyectosComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.GetProyectos().subscribe(data=>{
-      console.log("status",data.status);
-      for(let i=0; i<data.length; i++){
-        this.proyectos.push(data[i]);
+      //console.log(data.message);
+      var datos = data.message;
+      console.log(datos.length);
+      for(let i=0; i<datos.length; i++){
+        this.proyectos.push(datos[i]);
       }
     })
-    console.log(this.proyectos);
+   console.log(this.proyectos);
   }
 }
